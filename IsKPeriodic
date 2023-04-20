@@ -9,7 +9,7 @@ bool IsKPeriodic(const std::string& str, const size_t& k)
 		return false;
 	}
 
-	//создадим эталонную строку, c которая должна повторяться
+	//создадим эталонную строку, которая должна быть периодом строки str
 	std::string gage;
 	gage.insert(0, str, 0, k);
 
