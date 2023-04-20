@@ -1,0 +1,27 @@
+bool IsKPeriodic(const std::string& str, const size_t& k)
+{
+	if (k == 0) {
+		std::cout << "wrong K" << std::endl;
+		return false;
+	}
+	//если количество символов строки не кратно числу, то возвращает false;
+	if (str.size() % k != 0) {
+		return false;
+	}
+
+	//создадим эталонную строку, c которая должна повторяться
+	std::string gage;
+	gage.insert(0, str, 0, k);
+
+	//сравним все последовательно идущие подстроки длинны k в строке str со строкой gage
+	//несмотря на 2 вложенных цикла, сложность пропорциональна длинне строки, тк обход каждого элемента строки совершается единожды
+	for (size_t i = 0; i < str.size(); i = ++i * k)
+	{
+		for (size_t j = 0; j < gage.size(); j++)
+		{
+			if (gage[j] != str[i + j])
+				return false;
+		}
+	}
+	return true;
+}
